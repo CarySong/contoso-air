@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contoso-air1
+  name: contoso-air2
   labels:
-    app.kubernetes.io/name: contoso-air1
+    app.kubernetes.io/name: contoso-air2
     kubernetes.azure.com/generator: devhub
-  namespace: qa
+  namespace: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: contoso-air1
+      app.kubernetes.io/name: contoso-air2
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: contoso-air1
+        app.kubernetes.io/name: contoso-air2
     spec:
       containers:
-        - name: contoso-air1
-          image: myregistrywqx2.azurecr.io/contoso-air1:latest
+        - name: contoso-air2
+          image: myregistrywqx2.azurecr.io/contoso-air2:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -31,7 +31,7 @@ spec:
               memory: "1Gi"
           envFrom:
             - configMapRef:
-                name: contoso-air1-config
+                name: contoso-air2-config
             - secretRef:
                 name: secret-ref
                 optional: true
@@ -83,11 +83,11 @@ spec:
               topologyKey: kubernetes.io/hostname
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/name: contoso-air1
+                  app.kubernetes.io/name: contoso-air2
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
           labelSelector:
             matchLabels:
-              app.kubernetes.io/name: contoso-air1
+              app.kubernetes.io/name: contoso-air2
