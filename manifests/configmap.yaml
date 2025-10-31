@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: contoso-air2-config
+  name: contoso-air4-config
   namespace: dev
   labels:
-    app.kubernetes.io/name: contoso-air2
+    app.kubernetes.io/name: contoso-air4
     kubernetes.azure.com/generator: devhub
 data:
