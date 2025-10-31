@@ -1,6 +1,6 @@
 FROM node:22
-ENV PORT 3000
-EXPOSE 3000
+ENV PORT 8081
+EXPOSE 8081
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
